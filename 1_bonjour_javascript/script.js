@@ -1,6 +1,6 @@
 let prenom = 'Beyonce'; //créé une variable prénom, on y met Beyonce.
 
-let nom = prompt ("Comment tu t'appelles ?") // créé une variable nom, on y met ce que le prompt va récupèrer
+let nom = prompt ("Comment tu t'appelles ?"); // créé une variable nom, on y met ce que le prompt va récupèrer
                                             // on indique a user ce qu'on veut recup via le ("message du prompt")
 
 

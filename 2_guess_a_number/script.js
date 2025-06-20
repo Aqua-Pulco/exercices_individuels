@@ -35,7 +35,6 @@ returnNumber();
 //     ⚠️ Attention : le prompt()bloque l’exécution de la page et stoppe l’affichage du rendu. Pour afficher des informations à la suite d’un
 //     prompt(), utilisez alert().
 
-//         Créer une fonction gamePlay qui gérera vos appels de fonctions et la transmission de votre variable d’une fonction à une autre.
 
 
 function didWin(number) {
@@ -61,8 +60,18 @@ function didWin(number) {
     } 
 }
 
+//         Créer une fonction gamePlay qui gérera vos appels de fonctions et la transmission de votre variable d’une fonction à une autre.
+//         Concrètement :
+//         Tu vas demander un nombre avec returnNumber()
+//         Ce nombre est stocké dans une variable (givenNumber)
+//         Ensuite, tu passes cette variable à didWin(givenNumber)
+
+
 didWin();
 
+function gamePlay(params) {
+    
+}
 
 
 

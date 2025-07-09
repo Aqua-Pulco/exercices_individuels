@@ -6,24 +6,29 @@
 // 4. fonction : si SE RENSEIGNER SUR LES REGLES DU JEU si allumettes = 0; you win (+reste)
 
 let total = 50;
-let usersTab= [];
-let userEntry;
+let usersTab = [];
+let playersNumber;
 
 do {
-    userEntry = prompt("How many players are you ?",)
-    userEntry = parseInt(userEntry);
-    console.log("dowhile", userEntry);
-    while (userEntry < 2) {
-        userEntry = prompt("You need to be at least 2, sorry...",);
-        userEntry = parseInt(userEntry);
-        console.log("while du dowhile", userEntry);
+    playersNumber = prompt("How many players are you ?",)
+    playersNumber = parseInt(playersNumber);
+    console.log("dowhile", playersNumber);
+    while (playersNumber < 2 || playersNumber > 10) {
+        playersNumber = prompt("You need to be at least 2, and max 10 sorry...",);
+        playersNumber = parseInt(playersNumber);
+        console.log("while du dowhile", playersNumber);
     }
 } while (
-    isNaN(userEntry)
+    isNaN(playersNumber)
 );
 
+console.log(usersTab);
 
-
+for (let i = 0; i < playersNumber; i++){
+    const pseudo = prompt(`PLAYER ${i+1}\nEnter a nickname`)
+    usersTab.push(pseudo);
+}
+console.log(usersTab);
 
 
 

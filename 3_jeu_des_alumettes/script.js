@@ -1,35 +1,60 @@
+// //TOUT REFAIRE AVEC DE FONCTIONS
 
+// // ON A UN PB ROGER AVEC Annuler du prompt
 
-// 1. prompt combien de joueurs si > 2 tu ne peux pas jouer tout.e seul.e = numberOfPlayers/howManyPlayers
-// 2. prompt pseudo boucle sur joueurs
-// 3. prompt combien d'alumettes player 1 / 2 etc
-// 4. fonction : si SE RENSEIGNER SUR LES REGLES DU JEU si allumettes = 0; you win (+reste)
 
 let total = 50;
-let usersTab = [];
-let playersNumber;
+let pseudoTab = [];
+let numberOfPlayers;
 
-do {
-    playersNumber = prompt("How many players are you ?",)
-    playersNumber = parseInt(playersNumber);
-    console.log("dowhile", playersNumber);
-    while (playersNumber < 2 || playersNumber > 10) {
-        playersNumber = prompt("You need to be at least 2, and max 10 sorry...",);
-        playersNumber = parseInt(playersNumber);
-        console.log("while du dowhile", playersNumber);
+
+function howManyPlayers() {
+    let input = prompt("How many players wants to play?");
+    if (input === null) {
+        console.log("user leaving the game");
+
+        return null;
     }
-} while (
-    isNaN(playersNumber)
-);
+    while (isNaN(input) || input < 2 || input > 10) {
+        input = prompt("Please enter a number between 2 and 10");
+        if (input === null) {
+            console.log("user leaving the game");
 
-console.log(usersTab);
-
-for (let i = 0; i < playersNumber; i++){
-    const pseudo = prompt(`PLAYER ${i+1}\nEnter a nickname`)
-    usersTab.push(pseudo);
+            return null
+        }
+    }
+    input = parseInt(input);
+    console.log(input);
+    return numberOfPlayers = input;
 }
-console.log(usersTab);
+howManyPlayers();
+
+
+// console.log(pseudoTab);
+
+
+// for (let i = 0; i < numberOfPlayers; i++) {
+//     const pseudo = prompt(`PLAYER ${i + 1}\nChoose your name`)
+//     pseudoTab.push(pseudo);
+// }
+// console.log(pseudoTab);
 
 
 
+
+//     for (let i = 0; i < pseudoTab.length; i++) {
+//         let matchesAmount = prompt(`It's your turn ${pseudoTab[i]}!\nHow many matches do you want to remove?\n`);
+//         do {
+//             matchesAmount = parseInt(matchesAmount);
+//             while (matchesAmount > total || matchesAmount > 6 || matchesAmount < 1) {
+//                 matchesAmount = prompt(`Oh no\n${pseudoTab[i]}!\nYou can't remove that amount of match.es\nTry again please\n`);
+//                 matchesAmount = parseInt(matchesAmount);
+//             }
+//         } while (isNaN(matchesAmount));
+
+//         console.log("matchesamount", matchesAmount);
+
+//         total = parseInt(total - matchesAmount);
+//         console.log(`total`, total);
+//     }
 

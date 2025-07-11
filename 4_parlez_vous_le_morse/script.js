@@ -24,27 +24,37 @@ function encode(texte) { // je peux transformer un texte en tableau, traduire ch
     for (const el of tab1) {
         tab2 = `${tab2} ${translateLatinCharacter(el)}`;
     }
-    return tab2;
+    return tab2.trim();
 }
 console.log(encode('lalala'));
 
 function getMorse(text) {
     console.log(text)
    let morse =  encode(`${text}`)
-   console.log(morse);
+   
+   return morse
 }
-getMorse('test');
+console.log(getMorse('test'));
 
 // string = tableau
 
 function decode(morse){
     let morseLetter = morse.split(" ");
     let newTab = [];
-    console.log(morseLetter);
+    //console.log(morseLetter);
     for (let everyLetter of morseLetter){
+        if (!(everyLetter in morseToLatin)) {
+            return `${morse} n'est pas du morse`
+        }
+            //if () si everyLetter ne figure pas dans dico morseToLatin
+        // return qqch comme morse inconnu
        newTab = newTab + morseToLatin[everyLetter]
     }
-    console.log(newTab);
+    return newTab;
    }
 
-decode('- . ... -');
+console.log(decode('- . ... -'));
+
+console.log(decode(encode('test'))); 
+
+console.log(decode('lkhdq'));

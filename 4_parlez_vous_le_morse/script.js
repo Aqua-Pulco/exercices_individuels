@@ -39,7 +39,12 @@ getMorse('test');
 
 function decode(morse){
     let morseLetter = morse.split(" ");
+    let newTab = [];
     console.log(morseLetter);
+    for (let everyLetter of morseLetter){
+       newTab = newTab + morseToLatin[everyLetter]
+    }
+    console.log(newTab);
    }
 
 decode('- . ... -');

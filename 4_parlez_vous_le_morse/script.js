@@ -1,3 +1,10 @@
+//NEXT les lettres en morse sont séparées par un espace, et les mots par des “/” (slash).
+// je ne comprends pas la fin de la question 4
+// "Ainsi, créer la fonction getMorseCharacterList ainsi que translateMorseCharacter"
+// perso je prefere traduire une phrase en francais en morse.
+// et faire l'inverse ensuite
+// puis html
+
 import latinToMorse from './annexe1.js';
 import morseToLatin from './annexe2.js';
 
@@ -28,13 +35,13 @@ function encode(texte) { // je peux transformer un texte en tableau, traduire ch
 }
 console.log(encode('lalala'));
 
-function getMorse(text) {
+function getMorseFromString(text) {
     console.log(text)
    let morse =  encode(`${text}`)
    
    return morse
 }
-console.log(getMorse('test'));
+console.log(`test getMorseF.>>${getMorseFromString('test')}`);
 
 // string = tableau
 
@@ -48,13 +55,11 @@ function decode(morse){
         }
             //if () si everyLetter ne figure pas dans dico morseToLatin
         // return qqch comme morse inconnu
-       newTab = newTab + morseToLatin[everyLetter]
+       newTab = `${newTab} ${morseToLatin[everyLetter]}`
     }
     return newTab;
    }
 
 console.log(decode('- . ... -'));
-
 console.log(decode(encode('test'))); 
-
-console.log(decode('lkhdq'));
+console.log(decode('...--'));

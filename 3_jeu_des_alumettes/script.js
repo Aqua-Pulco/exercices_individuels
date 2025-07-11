@@ -28,27 +28,57 @@ function howManyPlayers() {
 
 howManyPlayers();
 
-
-for (let i = 0; i < numberOfPlayers; i++) {
-    const pseudo = prompt(`PLAYER ${i + 1}\nChoose your name`)
-    pseudosTab.push(pseudo);
-}
-console.log(pseudosTab);
-
-function tour(){
-for (const element of pseudosTab) {
-    let answer = prompt(`${element}, how many matches do you want to take?`);
-    if (answer === null) {
-        console.log("user leaving the game");
-        return null
+function getPseudos() {
+    for (let i = 0; i < numberOfPlayers; i++) {
+        let pseudo = prompt(`PLAYER ${i + 1}\nChoose your name`)
+        if (pseudo === null) {
+            console.log("user leaving the game");
+            return null;
+        }
+        pseudosTab.push(pseudo);
     }
-    total -= answer
-    console.log(total);
-    
-}
-return total
+    console.log(pseudosTab);
+    return pseudosTab;
 }
 
-tour()
+getPseudos();
+
+
+function tour() {
+    for (const element of pseudosTab) {
+        let answer = prompt(`${element}, how many matches do you want to take?\n(from 1 to 6)`);
+        if (answer === null) {
+            console.log("user leaving the game");
+            return null;
+        }
+        answer = parseInt(answer);
+        while (answer < 1 || answer > 6) {
+            answer = prompt(`${element}, up to 6 matches authorized\n1 is the minimum`);
+            if (answer === null) {
+                console.log("user leaving the game");
+                return null;
+            }
+            while (isNaN(answer)) {
+                answer = prompt(`${element}, you need to enter a number`);
+                if (answer === null) {
+                    console.log("user leaving the game");
+                    return null;
+                }
+            }
+
+            answer = parseInt(answer);
+        }
+        total -= answer
+        console.log(total);
+
+    }
+    return total
+}
+
+
+while (total > 0) {
+    tour()
+}
+
 
 console.log(total);

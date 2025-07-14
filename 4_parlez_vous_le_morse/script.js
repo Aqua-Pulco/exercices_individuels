@@ -1,4 +1,6 @@
 // NEXT HTML
+//exo:
+//-.-. .... . ..- .-.. --- ..-
 
 import { getCharTab, oneCharIntoMorse, encode, getMorseFromString, decode} from './fonctions.js';
 
@@ -10,3 +12,4 @@ console.log(decode(getMorseFromString("c'est beau la vie")));
 console.log("decode =", decode('- . ... - / - . ... - / - . ... -'));
 console.log(`decode encode:${decode(encode('ceci est un test'))}`);
 console.log("faux morse", decode('...--'));
+

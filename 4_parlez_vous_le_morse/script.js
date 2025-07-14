@@ -1,76 +1,11 @@
-//NEXT les lettres en morse sont séparées par un espace, et les mots par des “/” (slash).
-// je ne comprends pas la fin de la question 4
-// "Ainsi, créer la fonction getMorseCharacterList ainsi que translateMorseCharacter"
-// perso je prefere traduire une phrase en francais en morse.
-// et faire l'inverse ensuite
-// puis html
+// NEXT HTML
 
-import latinToMorse from './annexe1.js';
-import morseToLatin from './annexe2.js';
-
-function getCharTab(texte) { // renvoie un tableau
-    let tab = texte.split("");
-    return tab;
-}
+import { getCharTab, oneCharIntoMorse, encode, getMorseFromString, decode} from './fonctions.js';
 
 console.log(getCharTab("Hello, Paris")); // split une string en array
-
-
-function oneCharIntoMorse(char) {  // un caractère uniquement
-    const charUp = char.toUpperCase();
-    if (!(charUp in latinToMorse)) {
-        if (char === ' ') {
-            char = '';             //on renvoie chaîne vide
-        }                          //ATTENTION !!\\ chaine vide !== rien
-        return char;
-    }
-    return latinToMorse[charUp]; //va chercher 1corresp morse ds dico pour 1 lettre lat
-}
-
-function encode(texte) {
-    let tab1 = getCharTab(texte); // transf un texte en tableau // y compris "" !!
-    let tab2 = [];
-    for (const el of tab1) {
-        const elIntoMorse = oneCharIntoMorse(el);
-        if (elIntoMorse === "") {
-            tab2.push("/");
-        }
-        else {
-            tab2.push(oneCharIntoMorse(el)); // traduire chq el // SAUF "" !!}
-        }
-    }
-        tab2 = tab2.join(" "); //met un espace entre chaq el du tab
-        return tab2.trim();
-}
-
-    console.log("encode lala=", encode('lala lala'));
-
-    function getMorseFromString(text) {
-        text = text.replaceAll(' ', '/');
-        let morse = encode(text);
-        return morse;
-    }
-
-    console.log(`test getMorseF=${getMorseFromString('test test test')}`);
-
-    // string = tableau
-
-    function decode(morse) {
-        let morseLetter = morse.split(" "); // des que je rencontre un espace cela definit un el du tab
-        let newTab = [];
-        for (let everyLetter of morseLetter) {
-            if (everyLetter === '/') { //a chaque el du tab
-                newTab.push(' ');
-            }
-            else if (!(everyLetter in morseToLatin)) { // si pas de correspondance :
-                alert(`${morse} n'est pas du morse`);
-                return `${morse} n'est pas du morse`;
-            }
-            newTab.push(morseToLatin[everyLetter]); //met dans le tab en attente les instances et separe par un espace
-        }
-        return newTab.join("").trim(); // renvoi tout.
-    }
-
-    console.log("decode =", decode('- . ... - / - . ... - / - . ... -'));
-    console.log(`decode encode:${decode(encode('ceci est un test'))}`);
-    console.log("faux morse", decode('...--'));
+console.log(oneCharIntoMorse('a'));
+console.log("encode lala lala=", encode('lala lala'));
+console.log(getMorseFromString("c'est beau la vie"));
+console.log("decode =", decode('- . ... - / - . ... - / - . ... -'));
+console.log(`decode encode:${decode(encode('ceci est un test'))}`);
+console.log("faux morse", decode('...--'));

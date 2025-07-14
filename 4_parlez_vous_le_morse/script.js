@@ -8,58 +8,66 @@
 import latinToMorse from './annexe1.js';
 import morseToLatin from './annexe2.js';
 
-function getLatinCharacterList(texte) {
-    // console.log(texte);
+function getCharTab(texte) { // renvoie un tableau
     let tab = texte.split("");
     return tab;
 }
 
-console.log(getLatinCharacterList("Hello, Paris")); // je peux split une string en array
+console.log(getCharTab("Hello, Paris")); // split une string en array
 
 
-function translateLatinCharacter(char) { //je peux aller chercher une correspondance dans un dictionnaire pour 1 lettre
-    char = char.toUpperCase()
-    if (char in latinToMorse === false) {
+function oneCharIntoMorse(char) {  // un caractère uniquement
+    const charUp = char.toUpperCase();
+    if (!(charUp in latinToMorse)) {
+        if (char === ' ') {
+            char = '';                          //     → on renvoie la chaîne vide
+        }
         return char;
     }
-    return latinToMorse[char];
+    return latinToMorse[charUp]; //va chercher une corresp m ds un dictionnaire pour 1 lettre
 }
 
-function encode(texte) { // je peux transformer un texte en tableau, traduire chaque el et reconstituer une string
-    let tab1 = getLatinCharacterList(texte);
+function encode(texte) {  
+    let tab1 = getCharTab(texte); // transf un texte en tableau,
     let tab2 = [];
     for (const el of tab1) {
-        tab2 = `${tab2} ${translateLatinCharacter(el)}`;
+        tab2.push(oneCharIntoMorse(el)); // traduire chq el
     }
+    console.log(tab2);
+    
+    tab2 = tab2.join(" "); //et reconstituer un mot en morse
+    console.log(tab2);
     return tab2.trim();
 }
-console.log(encode('lalala'));
 
-function getMorseFromString(text) {
-    console.log(text)
-   let morse =  encode(`${text}`)
-   
-   return morse
+console.log("encode lala=", encode('lala'));
+
+function getMorseFromString(text) { 
+    text = text.replaceAll(' ', '/');
+    let morse =  encode(text);
+    return morse;
 }
-console.log(`test getMorseF.>>${getMorseFromString('test')}`);
+
+console.log(`test getMorseF=${getMorseFromString('test test test')}`);
 
 // string = tableau
 
 function decode(morse){
-    let morseLetter = morse.split(" ");
-    let newTab = [];
-    //console.log(morseLetter);
-    for (let everyLetter of morseLetter){
-        if (!(everyLetter in morseToLatin)) {
-            return `${morse} n'est pas du morse`
+    let morseLetter = morse.split(" "); // des que je rencontre un espace cela definit un el du tab
+    let newTab = []; 
+    for (let everyLetter of morseLetter){ 
+        if (everyLetter === '/'){ //a chaque el du tab
+            newTab.push(' ');
         }
-            //if () si everyLetter ne figure pas dans dico morseToLatin
-        // return qqch comme morse inconnu
-       newTab = `${newTab} ${morseToLatin[everyLetter]}`
+        else if (!(everyLetter in morseToLatin)) { // si pas de correspondance :
+            alert (`${morse} n'est pas du morse`);
+            return `${morse} n'est pas du morse`;
+        }
+       newTab.push(morseToLatin[everyLetter]); //met dans le tab en attente les instances et separe par un espace
     }
-    return newTab;
+    return newTab.join("").trim(); // renvoi tout.
    }
 
-console.log(decode('- . ... -'));
-console.log(decode(encode('test'))); 
-console.log(decode('...--'));
+console.log(`decode =${decode('- . ... - / - . ... - / - . ... -')}`);
+console.log(encode('ceci est un test')); 
+// console.log(decode('...--'));

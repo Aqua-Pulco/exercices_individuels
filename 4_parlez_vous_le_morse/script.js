@@ -20,27 +20,27 @@ function oneCharIntoMorse(char) {  // un caractère uniquement
     const charUp = char.toUpperCase();
     if (!(charUp in latinToMorse)) {
         if (char === ' ') {
-            char = '';                          //     → on renvoie la chaîne vide
-        }
+            char = '';             //on renvoie chaîne vide
+        }                          //ATTENTION !!\\ chaine vide !== rien
         return char;
     }
-    return latinToMorse[charUp]; //va chercher une corresp m ds un dictionnaire pour 1 lettre
+    return latinToMorse[charUp]; //va chercher 1corresp morse ds dico pour 1 lettre lat
 }
 
 function encode(texte) {  
-    let tab1 = getCharTab(texte); // transf un texte en tableau,
+    let tab1 = getCharTab(texte); // transf un texte en tableau // y compris "" !!
     let tab2 = [];
     for (const el of tab1) {
-        tab2.push(oneCharIntoMorse(el)); // traduire chq el
+        tab2.push(oneCharIntoMorse(el)); // traduire chq el // y compris "" !!
     }
     console.log(tab2);
     
-    tab2 = tab2.join(" "); //et reconstituer un mot en morse
+    tab2 = tab2.join(" "); //met un espace entre chaq el du tab // y compris "" !!
     console.log(tab2);
     return tab2.trim();
 }
 
-console.log("encode lala=", encode('lala'));
+console.log("encode lala=", encode('lala lala'));
 
 function getMorseFromString(text) { 
     text = text.replaceAll(' ', '/');

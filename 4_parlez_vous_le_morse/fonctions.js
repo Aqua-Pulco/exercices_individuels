@@ -9,10 +9,7 @@ function getCharTab(texte) { // renvoie un tableau
 function oneCharIntoMorse(char) {  // un caractère uniquement
     const charUp = char.toUpperCase();
     if (!(charUp in latinToMorse)) {
-        if (char === ' ') {
-            char = '';             //on renvoie chaîne vide
-        }                          //ATTENTION !!\\ chaine vide !== rien
-        return char;
+        return '';                      //ATTENTION !!\\ chaine vide !== rien 
     }
     return latinToMorse[charUp]; //va chercher 1corresp morse ds dico pour 1 lettre lat
 }

@@ -36,18 +36,19 @@ function afficherPointeSapin(hauteur) {
     if (!Number.isFinite(num) || !Number.isInteger(num) || (num < 0 || num > 4)) {
         return ('veuillez renseigner un chiffre entre 0 et 4');
     }
-    else
+    else {
         sapinDeux = [];
-    for (let i = 0; i < sapinUn.length; i++) {
-        sapinDeux.push(sapinUn[i]);
-        if (i === hauteur) {
-            return sapinDeux.join("\n");
+        for (let i = 0; i < sapinUn.length; i++) {
+            sapinDeux.push(sapinUn[i]);
+            if (i === num) {
+                return sapinDeux.join("\n");
+            }
         }
     }
 }
 
 // console.log(afficherPointeSapin(5));
-// console.log(afficherPointeSapin(2));
+// console.log(afficherPointeSapin(4));
 
 ///////////// --1.1 ligne d'* -- \\\\\\\\\\\\\
 
@@ -60,7 +61,7 @@ function afficherEtoiles(n) {
         return (`Vous avez rentré '${n}',\nveuillez renseigner un chiffre entre 1 et ∞`);
     }
     else {
-        for (let j = 1; j <= n; j++) {
+        for (let j = 1; j <= num2; j++) {
             text.push('*');
         }
         let result = text.join("");
@@ -107,11 +108,11 @@ function afficherTriangleDroite(n) {
         let tabEtoiles = [];
 
         //creation du tableau croissant d'etoile
-        for (let l = 0; l < n - 1; l++) {
+        for (let l = 0; l < num3 - 1; l++) {
             tab1.push('*');
             tabEtoiles.push(tab1.join(""));
         }
-        console.log(tabEtoiles)
+        // console.log(tabEtoiles)
 
 
         // création du triangle droit complet
@@ -119,7 +120,7 @@ function afficherTriangleDroite(n) {
         for (let m = 0; m < tabEtoiles.length; m++) {
             tab2.push(tabEtoiles[m] + '\\');
         }
-        console.log(tab2)
+        // console.log(tab2)
 
 
         //affichge      
@@ -150,6 +151,7 @@ function afficherTriangleGauche(n) {
     let tabEtoiles = [];
     let ligne1 = [];
 
+    // nombre d'espaces ou de *
     const max = num4 - 1;
 
     //creation du tableau croissant d'etoile
@@ -158,7 +160,6 @@ function afficherTriangleGauche(n) {
         tabEtoiles.push(tab.join(""));
     }
     // console.log(tabEtoiles)
-
 
 
     //creation du tableau de /
@@ -170,14 +171,10 @@ function afficherTriangleGauche(n) {
     // console.log(tab1);
 
 
-
-
     //on crée la premiere ligne
     for (let r = 0; r < max; r++) {
         ligne1.push(' ')
     }
-
-
 
 
     //on crée la partie gauche sans espaces
@@ -200,9 +197,22 @@ function afficherTriangleGauche(n) {
     // comment aligner correctement les etoiles sur le bord de droite ?
 }
 
-console.log(afficherTriangleGauche(5))
-//     /
-//    /*
-//   /**
-//  /***
-// /****
+
+
+
+// 1.5 Assemblage et décorations
+
+
+//        +
+//       /|\
+//      /*|*\
+//     /**|**\
+//     /*o|**\
+//    /***|***\
+//   /**+*|*o**\
+//   /****|****\
+//  /***o*|**+**\
+// /*o*+**|***o**\
+//       ###
+//       ###
+//       ###

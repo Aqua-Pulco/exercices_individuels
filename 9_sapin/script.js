@@ -94,7 +94,8 @@ function afficherRectangle(h, L) {
 
 
 
-///////////// --1.3 ▲ d'* -- \\\\\\\\\\\\\
+///////////// --1.3 ▲ d'* droite -- \\\\\\\\\\\\\
+
 
 function afficherTriangleDroite(n) {
     let num3 = Number(n)
@@ -127,12 +128,81 @@ function afficherTriangleDroite(n) {
             sortie.push(tab2[o]);
             sortie.push("\n");
         }
-        const triangle = sortie.join("");
+        let triangle = sortie.join("");
         return triangle;
 
     }
 }
 
-console.log(afficherTriangleDroite(5));
+// console.log(afficherTriangleDroite(4));
 
 
+///////////// --1.4  ▲ d'* gauche   -- \\\\\\\\\\\\\
+
+
+function afficherTriangleGauche(n) {
+
+    const num4 = Number(n);
+    if (!Number.isFinite(num4) || !Number.isInteger(num4) || num4 <= 0) {
+        return `Valeur invalide: ${n}`;
+    }
+    let tab = [];
+    let tabEtoiles = [];
+    let ligne1 = [];
+
+    const max = num4 - 1;
+
+    //creation du tableau croissant d'etoile
+    for (let p = 0; p < max; p++) {
+        tab.push('*');
+        tabEtoiles.push(tab.join(""));
+    }
+    // console.log(tabEtoiles)
+
+
+
+    //creation du tableau de /
+    let tab1 = [];
+    for (let q = 0; q < tabEtoiles.length; q++) {
+        tab1.push('/' + tabEtoiles[q])
+
+    }
+    // console.log(tab1);
+
+
+
+
+    //on crée la premiere ligne
+    for (let r = 0; r < max; r++) {
+        ligne1.push(' ')
+    }
+
+
+
+
+    //on crée la partie gauche sans espaces
+    let out = [];
+    out.push(ligne1.join("") + '/' + '\n')
+    for (let o = 0; o < tab1.length; o++) {
+        ligne1.pop()
+        out.push(ligne1.join(""));
+        out.push(tab1[o]);
+        out.push("\n");
+    }
+
+
+    //on affiche
+    let triangleGauche = out.join("");
+    return triangleGauche;
+
+
+    // En s'inspirant de la fonction afficherTriangleDroite(), 
+    // comment aligner correctement les etoiles sur le bord de droite ?
+}
+
+console.log(afficherTriangleGauche(5))
+//     /
+//    /*
+//   /**
+//  /***
+// /****

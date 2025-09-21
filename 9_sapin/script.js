@@ -171,17 +171,19 @@ function afficherTriangleGauche(n) {
     // console.log(tab1);
 
 
-    //on crée la premiere ligne
+    
+    //on crée les espaces de la premiere ligne
     for (let r = 0; r < max; r++) {
         ligne1.push(' ')
     }
 
-
     //on crée la partie gauche sans espaces
     let out = [];
-    out.push(ligne1.join("") + '/' + '\n')
+    // ici 1ere ligne
+    out.push(ligne1.join("") + '/' + '\n');
+    // ici le corps
     for (let o = 0; o < tab1.length; o++) {
-        ligne1.pop()
+        ligne1.pop() //on enleve un espace
         out.push(ligne1.join(""));
         out.push(tab1[o]);
         out.push("\n");

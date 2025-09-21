@@ -31,32 +31,52 @@ function afficherPointeSapin(hauteur) {
 
     if (isNaN(hauteur) || hauteur < 0 || hauteur > 4) {
         console.log('veuillez renseigner un chiffre entre 0 et 4');
-        return
+        return;
     }
     else
         for (let i = 0; i < sapinUn.length; i++) {
             console.log(sapinUn[i]);
             if (i === hauteur) {
-                return
+                return;
             }
         }
 }
 
-afficherPointeSapin(5);
+// afficherPointeSapin(5);
 
 
-///////////// --1.1 -ligne d'* -- \\\\\\\\\\\\\\
+///////////// --1.1 ligne d'* -- \\\\\\\\\\\\\\
 
 function afficherEtoiles(n) {
 
     let text = [];
 
-    for (i = 1; i <= n; i++) {
-        text += '*';    
+    for (let j = 1; j <= n; j++) {
+        text.push('*');
     }
-    console.log(text.trim());
-    return
+
+    let result = text.join("");
+    return result;
 }
 
-afficherEtoiles(2)
-afficherEtoiles(5)
+// console.log(afficherEtoiles(2));
+// console.log(afficherEtoiles(5));
+
+
+
+///////////// --1.2 ■ d'* -- \\\\\\\\\\\\\\
+
+function afficherRectangle(h, L) {
+    let boite = [];
+    for (let k = 0; k < h; k++) {
+        boite.push(afficherEtoiles(L));
+        boite.push("\n");
+    }
+    const rectangle = boite.join("");
+    return rectangle;
+}
+
+console.log(afficherRectangle(5, 5))
+
+
+

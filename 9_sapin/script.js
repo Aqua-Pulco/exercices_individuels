@@ -2,11 +2,11 @@
 
 // Dans un littéral de chaîne ("...", '...', `...`), \ introduit une séquence d’échappement :
 
-// \" signifie : mets un guillemet " dans la chaîne (et ne termine pas la chaîne).
-// \\ signifie : mets un backslash \ dans la chaîne.
-// \n, \t… sont des sauts de ligne, tabulations, etc.
-// \xHH attend deux hexadécimaux (ex. \x41 = A).
-// \uXXXX et \u{...} sont des escapes Unicode.
+        // \" signifie : mets un guillemet " dans la chaîne (et ne termine pas la chaîne).
+        // \\ signifie : mets un backslash \ dans la chaîne.
+        // \n, \t… sont des sauts de ligne, tabulations, etc.
+        // \xHH attend deux hexadécimaux (ex. \x41 = A).
+        // \uXXXX et \u{...} sont des escapes Unicode.
 
 // Conséquence immédiate : écrire un \ “brut” à la fin d’une chaîne n’est pas autorisé.
 // Il va essayer “d’échapper” le guillemet fermant, ce qui rend le littéral invalide.
@@ -16,8 +16,12 @@
 // ctrl + L selectionne ligne
 // alt + up deplace ligne
 
+//METHOD VERIF en negatif
+// let n = Number(y)
+// if (!Number.isFinite(n) || !Number.isInteger(n) || n < 0 || n > 4)
 
-///////////// --ETAPE 1-- \\\\\\\\\\\\\\
+
+///////////// --ETAPE 1-- \\\\\\\\\\\\\
 
 const sapinUn = [
     "    +",
@@ -28,55 +32,76 @@ const sapinUn = [
 ];
 
 function afficherPointeSapin(hauteur) {
+    let num = Number(hauteur)
+    if (!Number.isFinite(num) || !Number.isInteger(num) || (num < 0 || num > 4)) {
+        return ('veuillez renseigner un chiffre entre 0 et 4');
 
-    if (isNaN(hauteur) || hauteur < 0 || hauteur > 4) {
-        console.log('veuillez renseigner un chiffre entre 0 et 4');
-        return;
     }
     else
-        for (let i = 0; i < sapinUn.length; i++) {
-            console.log(sapinUn[i]);
-            if (i === hauteur) {
-                return;
-            }
+        sapinDeux = [];
+    for (let i = 0; i < sapinUn.length; i++) {
+        sapinDeux.push(sapinUn[i]);
+        if (i === hauteur) {
+            return sapinDeux.join("\n");
         }
+    }
 }
 
-// afficherPointeSapin(5);
+// console.log(afficherPointeSapin(5));
+// console.log(afficherPointeSapin(2));
 
-
-///////////// --1.1 ligne d'* -- \\\\\\\\\\\\\\
+///////////// --1.1 ligne d'* -- \\\\\\\\\\\\\
 
 function afficherEtoiles(n) {
 
     let text = [];
 
-    for (let j = 1; j <= n; j++) {
-        text.push('*');
+    let num2 = Number(n)
+    if (!Number.isFinite(num2) || !Number.isInteger(num2) || num2 <= 0) {
+        return (`Vous avez rentré '${n}',\nveuillez renseigner un chiffre entre 1 et ∞`);
     }
-
-    let result = text.join("");
-    return result;
+    else {
+        for (let j = 1; j <= n; j++) {
+            text.push('*');
+        }
+        let result = text.join("");
+        return result;
+    }
 }
 
 // console.log(afficherEtoiles(2));
-// console.log(afficherEtoiles(5));
+// console.log(afficherEtoiles('nZ'));
+// console.log(afficherEtoiles(12));
 
 
-
-///////////// --1.2 ■ d'* -- \\\\\\\\\\\\\\
+///////////// --1.2 ■ d'* -- \\\\\\\\\\\\\
 
 function afficherRectangle(h, L) {
-    let boite = [];
-    for (let k = 0; k < h; k++) {
-        boite.push(afficherEtoiles(L));
-        boite.push("\n");
+    if (isNaN(h) || h < 0 || isNaN(L) || L < 0) {
+        return (`Vous avez rentré '${h}' et '${L}',\nveuillez renseigner des nombres valides`);
     }
-    const rectangle = boite.join("");
-    return rectangle;
+    else {
+        let boite = [];
+        for (let k = 0; k < h; k++) {
+            boite.push(afficherEtoiles(L));
+            boite.push("\n");
+        }
+        const rectangle = boite.join("");
+        return rectangle;
+    }
 }
 
-console.log(afficherRectangle(5, 5))
+// console.log(afficherRectangle('5', 5));
 
+
+
+///////////// --1.3 ▲ d'* -- \\\\\\\\\\\\\
+
+function afficherTriangleDroite(n) {
+    // En s'inspirant de la fonction afficherRectangle(),
+    // comment afficher des lignes qui "s'allongent" un peu plus à chaque itération ?
+}
+
+// afficherTriangleDroite(5)
 
 

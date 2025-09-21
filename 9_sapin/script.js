@@ -2,11 +2,11 @@
 
 // Dans un littéral de chaîne ("...", '...', `...`), \ introduit une séquence d’échappement :
 
-        // \" signifie : mets un guillemet " dans la chaîne (et ne termine pas la chaîne).
-        // \\ signifie : mets un backslash \ dans la chaîne.
-        // \n, \t… sont des sauts de ligne, tabulations, etc.
-        // \xHH attend deux hexadécimaux (ex. \x41 = A).
-        // \uXXXX et \u{...} sont des escapes Unicode.
+// \" signifie : mets un guillemet " dans la chaîne (et ne termine pas la chaîne).
+// \\ signifie : mets un backslash \ dans la chaîne.
+// \n, \t… sont des sauts de ligne, tabulations, etc.
+// \xHH attend deux hexadécimaux (ex. \x41 = A).
+// \uXXXX et \u{...} sont des escapes Unicode.
 
 // Conséquence immédiate : écrire un \ “brut” à la fin d’une chaîne n’est pas autorisé.
 // Il va essayer “d’échapper” le guillemet fermant, ce qui rend le littéral invalide.
@@ -35,7 +35,6 @@ function afficherPointeSapin(hauteur) {
     let num = Number(hauteur)
     if (!Number.isFinite(num) || !Number.isInteger(num) || (num < 0 || num > 4)) {
         return ('veuillez renseigner un chiffre entre 0 et 4');
-
     }
     else
         sapinDeux = [];
@@ -98,10 +97,42 @@ function afficherRectangle(h, L) {
 ///////////// --1.3 ▲ d'* -- \\\\\\\\\\\\\
 
 function afficherTriangleDroite(n) {
-    // En s'inspirant de la fonction afficherRectangle(),
-    // comment afficher des lignes qui "s'allongent" un peu plus à chaque itération ?
+    let num3 = Number(n)
+    if (!Number.isFinite(num3) || !Number.isInteger(num3) || num3 <= 0) {
+        return (`Vous avez rentré ${n}\nentrez un nombre valide`)
+    }
+    else {
+        let tab1 = [];
+        let tabEtoiles = [];
+
+        //creation du tableau croissant d'etoile
+        for (let l = 0; l < n - 1; l++) {
+            tab1.push('*');
+            tabEtoiles.push(tab1.join(""));
+        }
+        console.log(tabEtoiles)
+
+
+        // création du triangle droit complet
+        let tab2 = ['\\'];
+        for (let m = 0; m < tabEtoiles.length; m++) {
+            tab2.push(tabEtoiles[m] + '\\');
+        }
+        console.log(tab2)
+
+
+        //affichge      
+        let sortie = [];
+        for (let o = 0; o < tab2.length; o++) {
+            sortie.push(tab2[o]);
+            sortie.push("\n");
+        }
+        const triangle = sortie.join("");
+        return triangle;
+
+    }
 }
 
-// afficherTriangleDroite(5)
+console.log(afficherTriangleDroite(5));
 
 

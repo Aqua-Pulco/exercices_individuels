@@ -18,12 +18,12 @@ function encode(texte) {
     let tab1 = getCharTab(texte); // transf un texte en tableau // y compris "" !!
     let tab2 = [];
     for (const el of tab1) {
-        const elIntoMorse = oneCharIntoMorse(el);
-        if (elIntoMorse === "") {
+        const elIntoMorse = oneCharIntoMorse(el); //filtre a "" car
+        if (elIntoMorse === "") {                 // "" existe apres oneCharIntoMorse
             tab2.push("/");
         }
         else {
-            tab2.push(oneCharIntoMorse(el)); // traduire chq el
+            tab2.push(oneCharIntoMorse(el)); // traduire chq el 
         }
     }
     tab2 = tab2.join(" "); //met un espace entre chaq el du tab

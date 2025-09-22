@@ -1,20 +1,23 @@
 /* chemin relatif depuis style.css vers /fonts */
 @font-face {
-  font-family: "Virgil";
-  src: url("./fonts/Virgil.woff2") format("woff2"),
-       url("./fonts/Virgil GS Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Virgil";
+    src: url("./fonts/Virgil.woff2") format("woff2"),
+        url("./fonts/Virgil GS Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 :root {
-  --font: "Virgil", cursive;
+    --font: "Virgil", cursive;
+    --btn-bckgrnd: rgba(99, 204, 253, 0.588);
+    --border-1: 1px solid black;
 }
 
-*{
+* {
     font-family: var(--font);
 }
+
 .title {
     display: flex;
     justify-content: center;
@@ -28,29 +31,89 @@
     align-items: center;
 }
 
+
 label {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem auto;
-    input{
-        margin: 1rem;
-        max-width: 10rem;;
-    }
-    button{
-        background-color:rgb(161, 230, 242);
-        min-width: 10rem;
-        min-height: 2rem;
-
-        border-style:solid;
-        border-width: 1px;
-        border-color: black;
-        border-radius: 0.3rem;
-       
-
-        color:aliceblue;
-        font-size: 1rem;
-    }
 }
 
+label input {
+    margin: 1rem;
+    max-width: 10rem;
+}
+
+
+label button {
+    background-color: var(--btn-bckgrnd);
+    min-width: 10rem;
+    min-height: 2rem;
+    border: var(--border-1);
+    border-radius: 0.3rem;
+    color: aliceblue;
+    font-size: 1rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+/* dé-nesté depuis .menu { h1, .second-title { … } } */
+.menu h1,
+.menu .second-title {
+    margin-left: 1rem;
+}
+
+.div-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+
+    max-width: 50%;
+    padding: 1rem;
+    margin: 1rem;
+    border: var(--border-1);
+    border-radius: 2rem;
+}
+
+
+.div-menu .div-menu-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+}
+
+
+.div-menu .div-menu-2 h1 {
+    margin: 0;
+    padding: 1.5rem;
+    border: var(--border-1);
+    border-radius: 1rem;
+    background-color: rgb(228, 229, 229);
+}
+
+
+/* .div-menu .div-menu-2 div .div-menu-text {
+
+} */
+
+
+.div-menu>button {
+    margin: 1rem;
+    background-color: var(--btn-bckgrnd);
+    width: 12rem;
+    height: 2.5rem;
+    border: var(--border-1);
+    border-radius: 0.5rem;
+    color: aliceblue;
+    font-size: 1.5rem;
+
+
+
+}

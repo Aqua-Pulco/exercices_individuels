@@ -3,7 +3,8 @@ const menu_h1 = document.getElementById('menu-title')
 const greetings = document.getElementById('menu-second-title')
 const container = document.getElementById('menu-containter')
 
-let menuTextBtn;
+let menuTextBtn; let orderButton; let orderBtn;
+
 let username = localStorage.getItem('firstName');
 console.log(username)
 
@@ -33,9 +34,7 @@ async function fetchMenus() {
     return data;
 }
 
-
-
-const showOnePlate = async (data) => {
+const showPlates = async (data) => {
 
 
     try {
@@ -46,6 +45,9 @@ const showOnePlate = async (data) => {
 
         for (const el of menu) {
             divNumber = String(compteur)
+
+
+            // GROS DEGUEULI - PARTIE A REVOIR FACTORISER LA REPETITION
 
             nouvelleBalise('div', `container-div${divNumber}`, container);
             let dynamiqueDiv1 = document.getElementById(`container-div${divNumber}`);
@@ -62,10 +64,23 @@ const showOnePlate = async (data) => {
             nouvelleBaliseText('h2', menu[compteur].plate, dynamiqueDiv3);
             nouvelleBaliseText('h3', menu[compteur].description, dynamiqueDiv3);
 
-            nouvelleBaliseText('button', menuTextBtn, dynamiqueDiv1);
+            orderButton = nouvelleBaliseText('button', menuTextBtn, dynamiqueDiv1);
+            orderButton.className='order-button';
             compteur = compteur + 1;
 
+
         }
+
+
+        orderBtn = document.querySelector('.order-button')
+
+        
+        orderBtn.addEventListener("click", (e) => {
+            e.preventDefault()
+
+            window.location.href = './commande.html';
+
+        })
         console.log(container.children)
     }
     catch (e) {
@@ -75,5 +90,8 @@ const showOnePlate = async (data) => {
 };
 
 let menu = fetchMenus()
-showOnePlate(menu);
+showPlates(menu);
 
+
+
+// >>>>>>>> NEXT COMMANDER <<<<<<<<

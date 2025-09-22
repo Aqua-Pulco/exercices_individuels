@@ -171,7 +171,7 @@ function afficherTriangleGauche(n) {
     // console.log(tab1);
 
 
-    
+
     //on crée les espaces de la premiere ligne
     for (let r = 0; r < max; r++) {
         ligne1.push(' ')
@@ -203,6 +203,8 @@ function afficherTriangleGauche(n) {
 
 
 // 1.5 Assemblage et décorations
+
+// ALLER VOIR DU COT DES TABLEAUX A 2 DIMENSIONS
 
 
 //        +

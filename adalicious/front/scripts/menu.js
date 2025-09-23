@@ -78,7 +78,7 @@ const showPlates = async (data) => {
         orderBtn.addEventListener("click", (e) => {
             e.preventDefault()
 
-            window.location.href = './commande.html';
+            window.location.href = '.pages/commande.html';
 
         })
         console.log(container.children)
